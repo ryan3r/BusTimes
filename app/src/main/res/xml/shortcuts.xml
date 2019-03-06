@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="near_by"
+        android:enabled="true"
+        android:icon="@drawable/ic_location_black"
+        android:shortcutShortLabel="@string/shortcut_near_by_title_short"
+        android:shortcutLongLabel="@string/shortcut_near_by_title">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.ryan3r.bustimes"
+            android:targetClass="com.ryan3r.bustimes.MainActivity">
+            <extra android:name="tabIndex" android:value="1"/>
+        </intent>
+    </shortcut>
+</shortcuts>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Bus times</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="shortcut_near_by_title_short">Near by</string>
+    <string name="shortcut_near_by_title">Near by stops</string>
+    <string name="open_drawer">Open drawer</string>
+    <string name="close_drawer">Close drawer</string>
+    <string name="arriving">Arriving</string>
+    <string name="none">None</string>
+    <string name="error_short">Error</string>
+    <string name="failed_to_load">Failed to load stops</string>
+    <string name="location_error">An error occurred while fetching your location.</string>
+    <string name="location_permission">Location permission is required to find near by stops</string>
+    <string name="no_predictions">No predictions</string>
+    <string name="no_schedule">No schedule for this stop</string>
+</resources>

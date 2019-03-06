@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/favorite"
+        android:title="Favorite"
+        android:icon="@drawable/ic_star_border"
+        app:showAsAction="always"/>
+    <!--<item android:id="@+id/routes"-->
+        <!--android:title="Routes"-->
+        <!--android:icon="@drawable/ic_bus_white"-->
+        <!--app:showAsAction="always"/>-->
+</menu>
