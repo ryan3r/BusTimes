@@ -34,4 +34,4 @@ before_install:
   - ./gradlew dependencies || true
 
 script:
-  - "./gradlew clean build test"
+  - "./gradlew clean buildDebug test"
