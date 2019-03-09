@@ -35,3 +35,7 @@ before_install:
 
 script:
   - "./gradlew clean buildDebug test"
+
+deploy:
+  provider: script
+  script: bash deploy.sh
