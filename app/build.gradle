@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+plugin {
+	id 'com.github.triplet.play' version '2.1.0'
+}
+
 android {
     compileSdkVersion 27
     defaultConfig {
