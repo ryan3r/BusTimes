@@ -9,16 +9,16 @@ android {
         applicationId "com.ryan3r.bustimes"
         minSdkVersion 24
         targetSdkVersion 27
-        versionCode 5
-        versionName "1.4"
+        versionCode 7
+        versionName "1.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 	signingConfigs {
 		release {
 			storeFile file("../android.jks")
-			storePassword System.getenv("KEY_PASSWORD")
+			storePassword "---MY-PASSWORD-HERE---"
 			keyAlias "release"
-			keyPassword System.getenv("KEY_PASSWORD")
+			keyPassword "---MY-PASSWORD-HERE---"
 		}
 	}
     buildTypes {
