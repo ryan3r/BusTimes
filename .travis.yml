@@ -19,7 +19,8 @@ android:
   - extra-google-m2repository
   - extra-android-m2repository
 script:
-  - echo Hi
+  - chmod +x gradlew
+  - ./gradlew test
 deploy:
   provider: script
   script: bash deploy.sh
