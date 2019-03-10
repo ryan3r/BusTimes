@@ -34,6 +34,7 @@ before_install:
     #- ./gradlew dependencies || true
 
 script:
+  - echo Hi
   #- "./gradlew clean buildDebug test"
 
 deploy:
