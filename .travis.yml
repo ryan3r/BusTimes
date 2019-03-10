@@ -30,11 +30,11 @@ android:
    # - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
    # - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
 before_install:
-  - chmod +x gradlew
-  - ./gradlew dependencies || true
+  # - chmod +x gradlew
+    #- ./gradlew dependencies || true
 
 script:
-  - "./gradlew clean buildDebug test"
+  #- "./gradlew clean buildDebug test"
 
 deploy:
   provider: script
