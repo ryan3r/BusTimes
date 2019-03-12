@@ -73,7 +73,7 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
         mPrediction.clear();
 
         for(NextBusPredictions.Prediction prediction : predictions) {
-            int limit = 2;
+            int limit = 3;
 
             for(NextBusPredictions.Time time : prediction.getTimes()) {
                 if(limit-- == 0) break;
