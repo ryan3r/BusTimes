@@ -1,4 +1,7 @@
-apply plugin: 'com.android.application'
+plugins {
+	id 'com.android.application'
+	id 'com.github.triplet.play' version '2.1.0'
+}
 
 android {
     compileSdkVersion 27
@@ -6,16 +9,33 @@ android {
         applicationId "com.ryan3r.bustimes"
         minSdkVersion 24
         targetSdkVersion 27
-        versionCode 5
-        versionName "1.4"
+        versionCode 7
+        versionName "1.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+	signingConfigs {
+		release {
+			storeFile file("../android.jks")
+			storePassword "---MY-PASSWORD-HERE---"
+			keyAlias "release"
+			keyPassword "---MY-PASSWORD-HERE---"
+		}
+	}
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			signingConfig signingConfigs.release
         }
     }
+}
+
+play {
+	serviceAccountCredentials = file("../service-account.json")
+	track = "alpha"
+	userFraction = 1
+	releaseStatus = "completed"
+	defaultToAppBundles = true
 }
 
 dependencies {
