@@ -1,4 +1,4 @@
-language: none
+language: generic
 services:
   - docker
 
@@ -6,4 +6,4 @@ before_install:
   - docker pull thyrlian/android-sdk
 
 script:
-  - docker run --rm -v "$(pwd):/mnt" -w /mnt -t ./gradlew test
+  - docker run --rm -v "$(pwd):/mnt" -w /mnt -t thyrlian/android-sdk ./gradlew test
