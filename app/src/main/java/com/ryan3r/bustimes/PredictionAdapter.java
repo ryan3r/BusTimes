@@ -20,6 +20,7 @@ import com.ryan3r.bustimes.nextbusclient.NextBusPredictions;
 import com.ryan3r.bustimes.nextbusclient.StopInfo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -32,12 +33,14 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
     private NextBusInfo mInfo;
     private HashSet<String> fetched;
 
-    private class TimePair {
+    private class TimePair implements Comparable<TimePair> {
+        private NextBusPredictions.Time time;
         private String title;
         private String routeId;
 
-        TimePair(String _title, String predId) {
-            title = _title;
+        TimePair(NextBusPredictions.Time time, String predId) {
+            this.time = time;
+            title = time.getTimeUntil() + " (" + time.getArrivalTime() + ")";
             routeId = predId.split("\\|")[0];
             String stopId = predId.split("\\|")[1];
 
@@ -57,6 +60,10 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
         StopInfo.RouteInfo getRoute() {
             return routes.get(routeId);
         }
+
+        public int compareTo(TimePair other) {
+            return (int) (time.getTime() - other.time.getTime());
+        }
     }
 
     public PredictionAdapter(Context context, NextBusPredictions predictor, NextBusPredictions.Handler handle, NextBusInfo info) {
@@ -73,18 +80,12 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
         mPrediction.clear();
 
         for(NextBusPredictions.Prediction prediction : predictions) {
-            int limit = 3;
-
             for(NextBusPredictions.Time time : prediction.getTimes()) {
-                if(limit-- == 0) break;
-
-                mPrediction.add(new TimePair(time.getTimeUntil() + " (" + time.getArrivalTime() + ")", prediction.getId()));
-            }
-
-            if(prediction.getTimes().isEmpty()) {
-                mPrediction.add(new TimePair("No predictions", prediction.getId()));
+                mPrediction.add(new TimePair(time, prediction.getId()));
             }
         }
+
+        Collections.sort(mPrediction);
 
         mHandler.onPrediction(predictions);
         notifyDataSetChanged();
