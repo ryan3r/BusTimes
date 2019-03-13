@@ -46,6 +46,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
     private ListView stopTimes;
     private SwipeRefreshLayout refreshLayout;
     private ListView routeList;
+    private TextView emptyMsg;
 //    private DrawerLayout drawerLayout;
 //    private TabLayout tabLayout;
 //    private Spinner spinner;
@@ -60,11 +61,14 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         errorText = findViewById(R.id.error_msg);
         stopTimes = findViewById(R.id.list);
         refreshLayout = findViewById(R.id.refresh_layout);
+        emptyMsg = findViewById(R.id.empty_msg);
 //        routeList = findViewById(R.id.routes);
 //        drawerLayout = findViewById(R.id.drawer);
 //        tabLayout = findViewById(R.id.tabs);
 //        spinner = findViewById(R.id.spinner_nav);
         Toolbar toolbar = findViewById(R.id.toolbar);
+
+        stopTimes.setEmptyView(emptyMsg);
 
         // set up the tabs
 //        tabLayout.addTab(tabLayout.newTab().setText("Predictions"));
@@ -332,6 +336,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         // show the spinner if there are no times
         if(stopTimes.getAdapter() == null || stopTimes.getAdapter().isEmpty()) {
             loader.setVisibility(View.VISIBLE);
+            emptyMsg.setVisibility(View.GONE);
         }
         // show the refresh indicator if there are times
         else {
@@ -444,6 +449,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         // show the loader
         if(stopTimes.getAdapter() == null) {
             loader.setVisibility(View.VISIBLE);
+            emptyMsg.setVisibility(View.GONE);
         }
 
         // nothing to show yet
