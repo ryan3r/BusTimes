@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker pull thyrlian/android-sdk
+  - docker pull ryan3r/bustimes-test
 
 script:
   - docker run --rm -v "$(pwd):/mnt" ryan3r/bustimes-test
