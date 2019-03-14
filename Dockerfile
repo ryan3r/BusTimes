@@ -1,6 +1,6 @@
 FROM thyrlian/android-sdk
 
-FROM openjdk:8-jdk
+FROM openjdk:8-jdk-slim
 ENV ANDROID_HOME="/usr/local/android-sdk"
 COPY --from=0 /opt/android-sdk $ANDROID_HOME
 COPY . /mnt
