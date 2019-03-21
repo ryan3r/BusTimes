@@ -30,14 +30,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
     private TextView errorText;
     private ListView stopTimes;
     private SwipeRefreshLayout refreshLayout;
-<<<<<<< Updated upstream
-    private ListView routeList;
     private TextView emptyMsg;
-//    private DrawerLayout drawerLayout;
-//    private TabLayout tabLayout;
-//    private Spinner spinner;
-=======
->>>>>>> Stashed changes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,26 +42,11 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         errorText = findViewById(R.id.error_msg);
         stopTimes = findViewById(R.id.list);
         refreshLayout = findViewById(R.id.refresh_layout);
-<<<<<<< Updated upstream
         emptyMsg = findViewById(R.id.empty_msg);
-//        routeList = findViewById(R.id.routes);
-//        drawerLayout = findViewById(R.id.drawer);
-//        tabLayout = findViewById(R.id.tabs);
-//        spinner = findViewById(R.id.spinner_nav);
-        Toolbar toolbar = findViewById(R.id.toolbar);
 
         stopTimes.setEmptyView(emptyMsg);
 
-        // set up the tabs
-//        tabLayout.addTab(tabLayout.newTab().setText("Predictions"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Schedule"));
-
-//        tabLayout.addOnTabSelectedListener(this);
-
-=======
         Toolbar toolbar = findViewById(R.id.toolbar);
-
->>>>>>> Stashed changes
         // make our toolbar the toolbar
         setSupportActionBar(toolbar);
 
@@ -249,86 +227,4 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         loader.setVisibility(View.GONE);
         refreshLayout.setRefreshing(false);
     }
-<<<<<<< Updated upstream
-
-    @Override
-    public void onTabReselected(TabLayout.Tab tab) {
-
-    }
-
-    @Override
-    public void onTabUnselected(TabLayout.Tab tab) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
-
-    // switch between predictions and the schedule
-    @Override
-    public void onTabSelected(TabLayout.Tab tab) {
-        // no tab yet
-        if(tab.getText() == null) return;
-
-        // clear the stop list
-        //stopTimes.setAdapter(null);
-        errorText.setText("");
-
-        if(tab.getText().equals("Predictions")) {
-            nextbus.startPredictions();
-//            spinner.setVisibility(View.GONE);
-        }
-        else {
-            nextbus.stopPredictions();
-            displaySchedule(false);
-        }
-    }
-
-    // switch days for the schedule
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        displaySchedule(false);
-    }
-
-    // show the schedule
-    private void displaySchedule(boolean reload) {
-        // show the loader
-        if(stopTimes.getAdapter() == null) {
-            loader.setVisibility(View.VISIBLE);
-            emptyMsg.setVisibility(View.GONE);
-        }
-
-        // nothing to show yet
-        if(routeId == null) return;
-
-        // load the schedule
-//        String day = (String) spinner.getSelectedItem();
-//        String stopId = getIntent().getStringExtra("stop");
-//
-//        nextBusInfo.getSchedule(day, stopId, routeId, reload, new NextBusInfo.ResponseHandler<BusSchedule>() {
-//            @Override
-//            public void onResponse(BusSchedule schedule) {
-//                // hide the loader
-//                loader.setVisibility(View.GONE);
-//                refreshLayout.setRefreshing(false);
-//
-//                if(schedule == null) {
-//                    errorText.setText(R.string.no_schedule);
-//                   //stopTimes.setAdapter(null);
-//                }
-//                else {
-//                    spinner.setVisibility(View.VISIBLE);
-//                    errorText.setText("");
-//
-//                    // display the schedule
-////                    stopTimes.setAdapter(
-////                            new ArrayAdapter<>(StopActivity.this, android.R.layout.simple_list_item_1, schedule.getTimes()));
-//                }
-//            }
-//        });
-    }
-=======
->>>>>>> Stashed changes
 }
