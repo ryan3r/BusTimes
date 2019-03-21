@@ -1,41 +1,26 @@
 package com.ryan3r.bustimes;
 
-import android.app.ActivityManager;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ryan3r.bustimes.nextbusclient.BusSchedule;
 import com.ryan3r.bustimes.nextbusclient.FavoriteInfo;
 import com.ryan3r.bustimes.nextbusclient.NextBusInfo;
 import com.ryan3r.bustimes.nextbusclient.NextBusPredictions;
 import com.ryan3r.bustimes.nextbusclient.StopInfo;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Locale;
 
-public class StopActivity extends BaseActivity implements NextBusPredictions.Handler, NextBusInfo.ErrorHandler,
-        TabLayout.OnTabSelectedListener, AdapterView.OnItemSelectedListener {
+public class StopActivity extends BaseActivity implements NextBusPredictions.Handler, NextBusInfo.ErrorHandler {
     private NextBusPredictions nextbus;
     private NextBusInfo nextBusInfo;
     private FavoriteInfo favoriteInfo;
@@ -45,11 +30,14 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
     private TextView errorText;
     private ListView stopTimes;
     private SwipeRefreshLayout refreshLayout;
+<<<<<<< Updated upstream
     private ListView routeList;
     private TextView emptyMsg;
 //    private DrawerLayout drawerLayout;
 //    private TabLayout tabLayout;
 //    private Spinner spinner;
+=======
+>>>>>>> Stashed changes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +49,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         errorText = findViewById(R.id.error_msg);
         stopTimes = findViewById(R.id.list);
         refreshLayout = findViewById(R.id.refresh_layout);
+<<<<<<< Updated upstream
         emptyMsg = findViewById(R.id.empty_msg);
 //        routeList = findViewById(R.id.routes);
 //        drawerLayout = findViewById(R.id.drawer);
@@ -76,6 +65,10 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
 
 //        tabLayout.addOnTabSelectedListener(this);
 
+=======
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
+>>>>>>> Stashed changes
         // make our toolbar the toolbar
         setSupportActionBar(toolbar);
 
@@ -102,112 +95,9 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-//                if(tabLayout.getSelectedTabPosition() == 0) {
-                    nextbus.refresh();
-//                }
-//                else {
-//                    displaySchedule(true);
-//                }
+                nextbus.refresh();
             }
         });
-
-        // add the days for the schedule
-//        String[] days = new String[] {
-//                "Saturday",
-//                "Monday",
-//                "Tuesday",
-//                "Wednesday",
-//                "Thursday",
-//                "Friday",
-//                "Saturday"
-//        };
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, days);
-//        spinner.setAdapter(adapter);
-
-        // select today in the drop down
-//        Calendar calendar = Calendar.getInstance();
-//
-//        spinner.setSelection(calendar.get(Calendar.DAY_OF_WEEK) - 1);
-//
-//        spinner.setOnItemSelectedListener(this);
-//
-//        // hide the spinner for predictions
-//        spinner.setVisibility(View.GONE);
-    }
-
-    private void showFabs(final StopInfo stop, ArrayList<StopInfo.RouteInfo> routes) {
-        // switch views
-        RouteListAdapter.ClickListener listener = new RouteListAdapter.ClickListener() {
-            @Override
-            public void onItemClick(StopInfo.RouteInfo route) {
-                routeId = route.getId();
-                showRoute(stop, route);
-
-                // close the drawer
-//                drawerLayout.closeDrawer(Gravity.END);
-            }
-        };
-
-        routeList.setDivider(null);
-        routeList.setAdapter(new RouteListAdapter(routes, this, listener));
-
-        StopInfo.RouteInfo route = routes.get(0);
-
-        // find the route we are on
-        if(routeId != null) {
-            for(StopInfo.RouteInfo info : routes) {
-                if(("" + info.getId()).equals(routeId)) {
-                    route = info;
-                }
-            }
-        }
-        else {
-            routeId = route.getId();
-        }
-
-        showRoute(stop, route);
-    }
-
-    // show the current route
-    private void showRoute(StopInfo stop, StopInfo.RouteInfo route) {
-        // change the spinner color
-        int colorInt = Color.parseColor(route.getColor());
-
-        // update the status bar and action bar
-        setColor(colorInt);
-        findViewById(R.id.appbar).setBackgroundColor(colorInt);
-
-        // update the tab colors
-//        tabLayout.setBackgroundColor(colorInt);
-//        tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
-
-        // set the action bar title
-        String title = stop.getTitle() + " (" + route.getShortTitle()  + ")";
-        setTitle(title);
-
-        // set the multitasking color and title
-        Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_foreground);
-        ActivityManager.TaskDescription description = new ActivityManager.TaskDescription(title, icon, colorInt);
-        setTaskDescription(description);
-
-        loader.getIndeterminateDrawable().setColorFilter(colorInt, PorterDuff.Mode.SRC_IN);
-
-        refreshLayout.setColorSchemeColors(colorInt);
-
-        // clear the old times
-//        stopTimes.setAdapter(null);
-
-        // set the routes
-        nextbus.setRoutes(route.getId() + "|" + stop.getId());
-
-        // refresh the schedule in schedule mode
-//        if(tabLayout.getSelectedTabPosition() == 1) {
-//            displaySchedule(false);
-//        }
-
-        // refresh the menu
-        invalidateOptionsMenu();
     }
 
     // show the options menu
@@ -269,18 +159,6 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
 
                 return true;
 
-            // toggle the routes drawer
-//            case R.id.routes:
-//                // toggle the drawers
-//                if(drawerLayout.isDrawerOpen(Gravity.END)) {
-//                    drawerLayout.closeDrawer(Gravity.END);
-//                }
-//                else {
-//                    drawerLayout.openDrawer(Gravity.END);
-//                }
-//
-//                return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -306,8 +184,6 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         nextBusInfo.getStopInfo(stopId, new NextBusInfo.ResponseHandler<StopInfo>() {
             @Override
             public void onResponse(StopInfo stop) {
-                //showFabs(response, response.getRoutes());
-
                 // set the action bar title
                 setTitle(stop.getTitle());
 
@@ -358,35 +234,6 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         errorText.setText("");
     }
 
-//        // check if we have any predictions
-//        if(savedPredictions != null && !savedPredictions.isEmpty()) {
-//            ArrayList<NextBusPredictions.Time> times = savedPredictions.get(0).getTimes();
-//
-//            // get the times (as strings)
-//            String[] strTimes = new String[times.size() + 1];
-//
-//            int i = 0;
-//            for (NextBusPredictions.Time time : times) {
-//                if((time.getTime() - System.currentTimeMillis()) <= 0) {
-//                    strTimes[i++] = "Arriving";
-//                }
-//                else {
-//                    strTimes[i++] = time.getTimeUntil() + " (" + time.getArrivalTime() + ")";
-//                }
-//            }
-//
-//            // get the time they were fetched at
-//            strTimes[i] = "Loaded " + savedPredictions.get(0).fetchedAtStr() + " ago.";
-//
-//            ArrayAdapter<String> aa = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, strTimes);
-//
-//            stopTimes.setAdapter(aa);
-//        }
-//        else {
-//            errorText.setText(R.string.no_predictions);
-//        }
-//    }
-
     // Show an error message
     public void requestError(Throwable err) {
         String errMsg = String.format(Locale.getDefault(), "Failed to load stops: %s", err.getMessage());
@@ -402,6 +249,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         loader.setVisibility(View.GONE);
         refreshLayout.setRefreshing(false);
     }
+<<<<<<< Updated upstream
 
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
@@ -481,4 +329,6 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
 //            }
 //        });
     }
+=======
+>>>>>>> Stashed changes
 }

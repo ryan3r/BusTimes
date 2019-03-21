@@ -1,7 +1,6 @@
 package com.ryan3r.bustimes;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -9,12 +8,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.ryan3r.bustimes.nextbusclient.FavoriteInfo;
 import com.ryan3r.bustimes.nextbusclient.NextBusInfo;
 import com.ryan3r.bustimes.nextbusclient.NextBusPredictions;
 import com.ryan3r.bustimes.nextbusclient.StopInfo;
@@ -66,7 +63,7 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
         }
     }
 
-    public PredictionAdapter(Context context, NextBusPredictions predictor, NextBusPredictions.Handler handle, NextBusInfo info) {
+    PredictionAdapter(Context context, NextBusPredictions predictor, NextBusPredictions.Handler handle, NextBusInfo info) {
         mContext = context;
         mInfo = info;
         mPrediction = new ArrayList<>();
@@ -144,16 +141,6 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
 
         TimePair time = mPrediction.get(position);
         StopInfo.RouteInfo info = time.getRoute();
-
-        // hide the loader
-        ProgressBar loader = currentView.findViewById(R.id.loader);
-        loader.setVisibility(View.GONE);
-
-        // set the loader color
-        if(info != null) {
-            int colorInt = Color.parseColor(info.getColor());
-            loader.getIndeterminateDrawable().setColorFilter(colorInt, PorterDuff.Mode.SRC_IN);
-        }
 
         // update the route title
         TextView titleView = currentView.findViewById(R.id.title);

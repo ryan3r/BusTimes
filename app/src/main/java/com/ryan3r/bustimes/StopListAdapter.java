@@ -34,10 +34,6 @@ public class StopListAdapter extends BaseAdapter {
         return i;
     }
 
-    /**
-     * Get the number of items to display
-     * @return The number of stops to display
-     */
     public int getCount() {
         return stops.size();
     }
