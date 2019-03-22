@@ -3,13 +3,11 @@ package com.ryan3r.bustimes;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ryan3r.bustimes.nextbusclient.NextBusInfo;
@@ -26,9 +24,7 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
     private Context mContext;
     private ArrayList<NextBusPredictions.Time> mPrediction;
     private NextBusPredictions.Handler mHandler;
-    private Map<String, StopInfo.RouteInfo> routes;
     private NextBusInfo mInfo;
-    private HashSet<String> fetched;
 
     PredictionAdapter(Context context, NextBusPredictions predictor, NextBusPredictions.Handler handle, NextBusInfo info) {
         mContext = context;
@@ -36,8 +32,6 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
         mPrediction = new ArrayList<>();
         predictor.setHandler(this);
         mHandler = handle;
-        routes = new HashMap<>();
-        fetched = new HashSet<>();
     }
 
     public void onPrediction(ArrayList<NextBusPredictions.Prediction> predictions) {
