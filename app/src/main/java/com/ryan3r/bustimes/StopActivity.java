@@ -137,6 +137,12 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
 
                 return true;
 
+            // Show the route picker dialog
+            case R.id.routes:
+                RoutePickerDialog picker = new RoutePickerDialog();
+                picker.show(getFragmentManager(), "route-picker");
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
