@@ -24,44 +24,11 @@ import java.util.Map;
 
 public class PredictionAdapter extends BaseAdapter implements NextBusPredictions.Handler {
     private Context mContext;
-    private ArrayList<TimePair> mPrediction;
+    private ArrayList<NextBusPredictions.Time> mPrediction;
     private NextBusPredictions.Handler mHandler;
     private Map<String, StopInfo.RouteInfo> routes;
     private NextBusInfo mInfo;
     private HashSet<String> fetched;
-
-    private class TimePair implements Comparable<TimePair> {
-        private NextBusPredictions.Time time;
-        private String title;
-        private String routeId;
-
-        TimePair(NextBusPredictions.Time time, String predId) {
-            this.time = time;
-            title = time.getTimeUntil() + " (" + time.getArrivalTime() + ")";
-            routeId = predId.split("\\|")[0];
-            String stopId = predId.split("\\|")[1];
-
-            if(!fetched.contains(stopId)) {
-                fetched.add(stopId);
-                mInfo.getStopInfo(stopId, new NextBusInfo.ResponseHandler<StopInfo>() {
-                    @Override
-                    public void onResponse(StopInfo stop) {
-                        for(StopInfo.RouteInfo route : stop.getRoutes()) {
-                            routes.put(route.getId(), route);
-                        }
-                    }
-                });
-            }
-        }
-
-        StopInfo.RouteInfo getRoute() {
-            return routes.get(routeId);
-        }
-
-        public int compareTo(TimePair other) {
-            return (int) (time.getTime() - other.time.getTime());
-        }
-    }
 
     PredictionAdapter(Context context, NextBusPredictions predictor, NextBusPredictions.Handler handle, NextBusInfo info) {
         mContext = context;
@@ -78,7 +45,7 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
 
         for(NextBusPredictions.Prediction prediction : predictions) {
             for(NextBusPredictions.Time time : prediction.getTimes()) {
-                mPrediction.add(new TimePair(time, prediction.getId()));
+                mPrediction.add(time);
             }
         }
 
@@ -139,22 +106,36 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
             currentView = inf.inflate(R.layout.fragment_favorite_item, container, false);
         }
 
-        TimePair time = mPrediction.get(position);
-        StopInfo.RouteInfo info = time.getRoute();
+        final NextBusPredictions.Time time = mPrediction.get(position);
 
         // update the route title
         TextView titleView = currentView.findViewById(R.id.title);
-        titleView.setText(time.title);
+        titleView.setText(time.toString());
 
         // update the button text
-        TextView textView = currentView.findViewById(R.id.text);
-        textView.setText(info != null ? info.getShortTitle() : "--");
+        final TextView textView = currentView.findViewById(R.id.text);
+        final FloatingActionButton fab = currentView.findViewById(R.id.button);
 
-        // update the color
-        if(info != null) {
-            FloatingActionButton fab = currentView.findViewById(R.id.button);
-            fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(info.getColor())));
-        }
+        mInfo.getStopInfo(time.getPrediction().getStopId() + "", new NextBusInfo.ResponseHandler<StopInfo>() {
+            @Override
+            public void onResponse(StopInfo response) {
+                StopInfo.RouteInfo info = null;
+
+                for(StopInfo.RouteInfo i : response.getRoutes()) {
+                    if(i.getId().equals("" + time.getPrediction().getRouteId())) {
+                        info = i;
+                        break;
+                    }
+                }
+
+                textView.setText(info != null ? info.getShortTitle() : "--");
+
+                // update the color
+                if(info != null) {
+                    fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(info.getColor())));
+                }
+            }
+        });
 
         return currentView;
     }

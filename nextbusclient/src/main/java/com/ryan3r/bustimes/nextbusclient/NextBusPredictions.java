@@ -328,7 +328,7 @@ public class NextBusPredictions extends NextBus {
             }
 
             private void _handleTime(JsonObject time, NextBusPredictions.Prediction prediction) {
-                prediction.times.add(new Time(time.get("epochTime").getAsLong()));
+                prediction.times.add(new Time(time.get("epochTime").getAsLong(), time.get("vehicle").getAsString(), prediction));
             }
 
             // retry sooner after errors
@@ -369,6 +369,8 @@ public class NextBusPredictions extends NextBus {
         public String getId() {
             return routeId + "|" + stopId;
         }
+        public int getRouteId() { return routeId; }
+        public int getStopId() { return stopId; }
 
         public String fetchedAtStr() {
             return makeTimeStr(fetchedAt, System.currentTimeMillis());
@@ -387,11 +389,15 @@ public class NextBusPredictions extends NextBus {
         return (diff / 60) + ":" + (seconds < 10 ? "0" + seconds : seconds);
     }
 
-    public static class Time {
+    public static class Time implements Comparable<Time> {
         private long time;
+        private String vehicle;
+        private Prediction prediction;
 
-        Time(long t) {
+        Time(long t, String vId, Prediction pred) {
             time = t;
+            vehicle = vId;
+            prediction = pred;
         }
 
         /**
@@ -424,6 +430,18 @@ public class NextBusPredictions extends NextBus {
          */
         public long getTime() {
             return time;
+        }
+
+        public String getVehicle() { return vehicle; }
+        public Prediction getPrediction() { return prediction; }
+
+        public int compareTo(Time other) {
+            return (int) (time - other.time);
+        }
+
+        @Override
+        public String toString() {
+            return getTimeUntil() + " (" + getArrivalTime() + ")";
         }
     }
 
