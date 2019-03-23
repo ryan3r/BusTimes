@@ -8,16 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.ryan3r.bustimes.nextbusclient.StopConfig;
 
+import java.util.ArrayList;
+
 public class RoutePickerAdapter extends ArrayAdapter<StopConfig.RouteChoice> {
     private LayoutInflater inflater;
 
-    RoutePickerAdapter(Context ctx, StopConfig stop) {
-        super(ctx, R.layout.fragment_route_picker_item, stop.getFullRoutes());
+    RoutePickerAdapter(Context ctx, ArrayList<StopConfig.RouteChoice> routes) {
+        super(ctx, R.layout.fragment_route_picker_item, routes);
         inflater = LayoutInflater.from(ctx);
     }
 
@@ -29,6 +30,8 @@ public class RoutePickerAdapter extends ArrayAdapter<StopConfig.RouteChoice> {
         }
 
         final StopConfig.RouteChoice choice = getItem(position);
+
+        if(choice == null) return convertView;
 
         CheckBox selected = convertView.findViewById(R.id.selected);
         selected.setChecked(choice.isSelected());

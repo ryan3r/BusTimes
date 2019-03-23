@@ -140,6 +140,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
             // Show the route picker dialog
             case R.id.routes:
                 RoutePickerDialog picker = new RoutePickerDialog();
+                picker.setStopId(getIntent().getStringExtra("stop"));
                 picker.show(getFragmentManager(), "route-picker");
                 return true;
 

@@ -26,15 +26,26 @@ public class StopConfig {
         }
     }
 
-    public StopConfig() {
+    private NextBusInfo mInfo;
+    private String mStopId;
 
+    public StopConfig(NextBusInfo info, String stopId) {
+        mInfo = info;
+        mStopId = stopId;
     }
 
-    public List<RouteChoice> getFullRoutes() {
-        ArrayList<RouteChoice> choice = new ArrayList<>();
-        choice.add(new RouteChoice(false, new StopInfo.RouteInfo("1", "Red", "#ffffff", "idk")));
-        choice.add(new RouteChoice(true, new StopInfo.RouteInfo("1", "Green", "#ffffff", "idk")));
-        choice.add(new RouteChoice(true, new StopInfo.RouteInfo("1", "Blue", "#ffffff", "idk")));
-        return choice;
+    public void getFullRoutes(final NextBusInfo.ResponseHandler<ArrayList<RouteChoice>> handler) {
+        mInfo.getStopInfo(mStopId, new NextBusInfo.ResponseHandler<StopInfo>() {
+            @Override
+            public void onResponse(StopInfo response) {
+                ArrayList<RouteChoice> routeChoices = new ArrayList<>();
+
+                for(StopInfo.RouteInfo route : response.getRoutes()) {
+                    routeChoices.add(new RouteChoice(true, route));
+                }
+
+                handler.onResponse(routeChoices);
+            }
+        });
     }
 }
