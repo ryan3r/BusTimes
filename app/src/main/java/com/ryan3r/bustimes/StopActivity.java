@@ -15,12 +15,13 @@ import android.widget.Toast;
 import com.ryan3r.bustimes.nextbusclient.FavoriteInfo;
 import com.ryan3r.bustimes.nextbusclient.NextBusInfo;
 import com.ryan3r.bustimes.nextbusclient.NextBusPredictions;
+import com.ryan3r.bustimes.nextbusclient.RouteChoice;
 import com.ryan3r.bustimes.nextbusclient.StopInfo;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class StopActivity extends BaseActivity implements NextBusPredictions.Handler, NextBusInfo.ErrorHandler {
+public class StopActivity extends BaseActivity implements NextBusPredictions.Handler, NextBusInfo.ErrorHandler, RoutePickerDialog.Callback {
     private NextBusPredictions nextbus;
     private NextBusInfo nextBusInfo;
     private FavoriteInfo favoriteInfo;
@@ -137,6 +138,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
             case R.id.routes:
                 RoutePickerDialog picker = new RoutePickerDialog();
                 picker.setStopId(getIntent().getStringExtra("stop"));
+                picker.setCallback(this);
                 picker.show(getFragmentManager(), "route-picker");
                 return true;
 
@@ -159,6 +161,13 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
     protected void onStart() {
         super.onStart();
 
+        updatePredictions();
+
+        // start requesting predictions
+        nextbus.startPredictions();
+    }
+
+    public void updatePredictions() {
         String stopId = getIntent().getStringExtra("stop");
         final StopActivity self = this;
 
@@ -172,17 +181,16 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
                 stopTimes.setAdapter(predictionsAdapter);
 
                 ArrayList<String> routes = new ArrayList<>();
-                for(StopInfo.RouteInfo route : stop.getRoutes()) {
-                    routeId = route.getId();
-                    routes.add(route.getId() + "|" + stop.getId());
+                for(RouteChoice route : stop.getRouteChoices()) {
+                    if(route.isSelected()) {
+                        routeId = route.getRoute().getId();
+                        routes.add(routeId + "|" + stop.getId());
+                    }
                 }
 
                 nextbus.setRoutes(routes);
             }
         });
-
-        // start requesting predictions
-        nextbus.startPredictions();
     }
 
     // show the refresh indicator

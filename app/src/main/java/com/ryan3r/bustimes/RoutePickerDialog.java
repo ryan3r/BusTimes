@@ -18,10 +18,12 @@ import java.util.ArrayList;
 public class RoutePickerDialog extends DialogFragment {
     private String mStopId;
     private StopInfo mStop;
+    private Callback callback;
 
     public void setStopId(String stopId) {
         mStopId = stopId;
     }
+    public void setCallback(Callback cb) { callback = cb; }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -45,9 +47,14 @@ public class RoutePickerDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         mStop.saveRouteChoices();
+                        callback.updatePredictions();
                     }
                 });
 
         return builder.create();
+    }
+
+    public interface Callback {
+        void updatePredictions();
     }
 }
