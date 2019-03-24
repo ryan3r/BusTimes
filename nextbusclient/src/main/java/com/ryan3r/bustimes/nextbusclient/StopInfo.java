@@ -253,7 +253,7 @@ class SaveRouteChoices extends AsyncTask<Object, Object, Object> {
         db.removeByStop(stopId);
 
         for(RouteChoice choice : routeChoices) {
-            if(!choice.isSelected()) {
+            if (!choice.isSelected()) {
                 db.insert(choice);
             }
         }

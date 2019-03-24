@@ -19,9 +19,11 @@ public class RouteChoice {
         selected = false;
     }
 
-    RouteChoice(boolean sel, StopInfo.RouteInfo r) {
+    RouteChoice(boolean sel, String sId, StopInfo.RouteInfo r) {
+        stopId = sId;
         selected = sel;
         route = r;
+        routeId = r.getId();
     }
 
     public boolean isSelected() {

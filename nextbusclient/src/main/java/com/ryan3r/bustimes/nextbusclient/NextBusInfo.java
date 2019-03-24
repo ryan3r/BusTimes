@@ -384,20 +384,22 @@ class LoadStop extends AsyncTask<String, Object, StopInfo[]> {
             ArrayList<StopInfo.RouteInfo> routes = stops[0].getRoutes();
             List<RouteChoice> choices = userDb.routeChoiceDao().get(params[0]);
             ArrayList<RouteChoice> fullChoices = new ArrayList<>();
+            ArrayList<StopInfo.RouteInfo> newRoutes = new ArrayList<>();
 
             outer: for(StopInfo.RouteInfo info : routes) {
                 for(RouteChoice choice : choices) {
                     if(info.getId().equals(choice.getRouteId())) {
                         choice.setRoute(info);
                         fullChoices.add(choice);
-                        routes.remove(info);
                         continue outer;
                     }
                 }
 
-                fullChoices.add(new RouteChoice(true, info));
+                newRoutes.add(info);
+                fullChoices.add(new RouteChoice(true, params[0], info));
             }
 
+            stops[0].setRoutes(newRoutes);
             stops[0].setRouteChoices(fullChoices);
         }
 

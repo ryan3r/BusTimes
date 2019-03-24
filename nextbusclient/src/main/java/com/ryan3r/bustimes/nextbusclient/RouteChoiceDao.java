@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface RouteChoiceDao {
     @Insert
-    void insert(RouteChoice info);
+    void insert(RouteChoice choice);
 
     @Query("DELETE FROM `RouteChoice` WHERE stopId = :id")
     void removeByStop(String id);
