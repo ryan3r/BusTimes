@@ -59,7 +59,6 @@ public class FavoritesFragment extends Fragment implements NextBusPredictions.Ha
                         FavoriteInfo info = response[i];
                         Intent intent = new Intent(getContext(), StopActivity.class);
                         intent.putExtra("stop", info.getStopId());
-                        intent.putExtra("route", info.getRouteId());
                         getContext().startActivity(intent);
                     }
                 });

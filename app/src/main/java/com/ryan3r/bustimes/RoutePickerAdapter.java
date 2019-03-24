@@ -10,14 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.ryan3r.bustimes.nextbusclient.StopConfig;
+import com.ryan3r.bustimes.nextbusclient.RouteChoice;
 
 import java.util.ArrayList;
 
-public class RoutePickerAdapter extends ArrayAdapter<StopConfig.RouteChoice> {
+public class RoutePickerAdapter extends ArrayAdapter<RouteChoice> {
     private LayoutInflater inflater;
 
-    RoutePickerAdapter(Context ctx, ArrayList<StopConfig.RouteChoice> routes) {
+    RoutePickerAdapter(Context ctx, ArrayList<RouteChoice> routes) {
         super(ctx, R.layout.fragment_route_picker_item, routes);
         inflater = LayoutInflater.from(ctx);
     }
@@ -29,7 +29,7 @@ public class RoutePickerAdapter extends ArrayAdapter<StopConfig.RouteChoice> {
             convertView = inflater.inflate(R.layout.fragment_route_picker_item, null);
         }
 
-        final StopConfig.RouteChoice choice = getItem(position);
+        final RouteChoice choice = getItem(position);
 
         if(choice == null) return convertView;
 

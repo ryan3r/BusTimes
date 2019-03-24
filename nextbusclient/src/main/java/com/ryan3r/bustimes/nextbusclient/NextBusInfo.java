@@ -74,7 +74,7 @@ public class NextBusInfo extends NextBus {
         }
 
         // try to load the data from the cache
-        new LoadStop(db, id, new StopHandler() {
+        new LoadStop(db, userDb, id, new StopHandler() {
             @Override
             public void onSuccess(StopInfo stop) {
                 // invalid data, re-download
@@ -163,8 +163,8 @@ public class NextBusInfo extends NextBus {
     }
 
     // get a favorite
-    public void getFavorite(String stopId, String routeId, NextBusInfo.ResponseHandler<FavoriteInfo> handler) {
-        new LoadFavorite(stopId, routeId).run(userDb, handler);
+    public void getFavorite(String stopId, NextBusInfo.ResponseHandler<FavoriteInfo> handler) {
+        new LoadFavorite(stopId).run(userDb, handler);
     }
 
     // insert, update, or delete a favorite
@@ -271,21 +271,8 @@ class AllFavorites extends BaseTask<StopDatabase, FavoriteInfo[]> {
 
         for(FavoriteInfo favorite : favorites) {
             StopInfo stop = stops.getStop(favorite.getStopId())[0];
-            StopInfo.RouteInfo route = null;
-
-            // get the route for this favorite
-            for(StopInfo.RouteInfo routeInfo : stop.getRoutes()) {
-                if(routeInfo.getId().equals(favorite.getRouteId())) {
-                    route = routeInfo;
-                }
-            }
-
-            assert(route != null);
-
             // set the title and color for the favorite
             favorite.setTitle(stop.getTitle());
-            favorite.setShortTitle(route.getShortTitle());
-            favorite.setColor(route.getColor());
         }
 
         return favorites;
@@ -328,16 +315,14 @@ class SaveFavorite extends BaseTask<UserDatabase, Object> {
 // load a favorite
 class LoadFavorite extends BaseTask<UserDatabase, FavoriteInfo> {
     private String id;
-    private String routeId;
 
-    LoadFavorite(String i, String rid) {
+    LoadFavorite(String i) {
         id = i;
-        routeId = rid;
     }
 
     @Override
     protected FavoriteInfo doWork() {
-        FavoriteInfo[] info = db.favoriteDao().get(id, routeId);
+        FavoriteInfo[] info = db.favoriteDao().get(id);
 
         if(info.length == 0) return null;
 
@@ -377,19 +362,44 @@ class SaveStops extends BaseTask<StopDatabase, Void> {
 class LoadStop extends AsyncTask<String, Object, StopInfo[]> {
     private NextBusInfo.StopHandler handler;
     private StopDatabase db;
+    private UserDatabase userDb;
 
-    LoadStop(StopDatabase d, String stopId, NextBusInfo.StopHandler h) {
+    LoadStop(StopDatabase d, UserDatabase u, String stopId, NextBusInfo.StopHandler h) {
         super();
 
         handler = h;
         db = d;
+        userDb = u;
 
         execute(stopId);
     }
 
     @Override
     protected StopInfo[] doInBackground(String... params) {
-        return db.stopDao().getStop(params[0]);
+        StopInfo[] stops = db.stopDao().getStop(params[0]);
+
+        if(stops.length > 0) {
+            ArrayList<StopInfo.RouteInfo> routes = stops[0].getRoutes();
+            List<RouteChoice> choices = userDb.routeChoiceDao().get(params[0]);
+            ArrayList<RouteChoice> fullChoices = new ArrayList<>();
+
+            outer: for(StopInfo.RouteInfo info : routes) {
+                for(RouteChoice choice : choices) {
+                    if(info.getId().equals(choice.getRouteId())) {
+                        choice.setRoute(info);
+                        fullChoices.add(choice);
+                        routes.remove(info);
+                        continue outer;
+                    }
+                }
+
+                fullChoices.add(new RouteChoice(true, info));
+            }
+
+            stops[0].setRouteChoices(fullChoices);
+        }
+
+        return stops;
     }
 
     @Override

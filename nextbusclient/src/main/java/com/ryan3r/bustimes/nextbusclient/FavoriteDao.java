@@ -17,8 +17,8 @@ public interface FavoriteDao {
     @Delete
     void remove(FavoriteInfo info);
 
-    @Query("SELECT * FROM FavoriteInfo WHERE FavoriteInfo.stopId = :id AND FavoriteInfo.routeId = :rid")
-    FavoriteInfo[] get(String id, String rid);
+    @Query("SELECT * FROM FavoriteInfo WHERE FavoriteInfo.stopId = :id")
+    FavoriteInfo[] get(String id);
 
     @Query("SELECT * FROM FavoriteInfo")
     FavoriteInfo[] getAll();

@@ -91,7 +91,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         favorite.setEnabled(false);
 
         // load the favorite info for this stop
-        nextBusInfo.getFavorite(getIntent().getStringExtra("stop"), routeId, new NextBusInfo.ResponseHandler<FavoriteInfo>() {
+        nextBusInfo.getFavorite(getIntent().getStringExtra("stop"), new NextBusInfo.ResponseHandler<FavoriteInfo>() {
             @Override
             public void onResponse(FavoriteInfo response) {
                 favoriteInfo = response;
@@ -114,17 +114,13 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
         switch(item.getItemId()) {
             // handle adding and removing a favorite
             case R.id.favorite:
-                // we need a route id
-                if(routeId == null) return false;
-
                 // update the icon
                 item.setIcon(favoriteInfo == null ? R.drawable.ic_star : R.drawable.ic_star_border);
 
                 // toggle the favorite state
                 if(favoriteInfo == null) {
                     favoriteInfo = new FavoriteInfo(
-                            getIntent().getStringExtra("stop"),
-                            routeId
+                            getIntent().getStringExtra("stop")
                     );
 
                     nextBusInfo.saveFavorite(favoriteInfo, 1);

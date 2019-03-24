@@ -10,7 +10,8 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.ryan3r.bustimes.nextbusclient.NextBusInfo;
-import com.ryan3r.bustimes.nextbusclient.StopConfig;
+import com.ryan3r.bustimes.nextbusclient.RouteChoice;
+import com.ryan3r.bustimes.nextbusclient.StopInfo;
 
 import java.util.ArrayList;
 
@@ -29,10 +30,10 @@ public class RoutePickerDialog extends DialogFragment {
         final ListView routes = listView.findViewById(R.id.routes);
         final Context ctx = getContext();
 
-        new StopConfig(new NextBusInfo(ctx), mStopId).getFullRoutes(new NextBusInfo.ResponseHandler<ArrayList<StopConfig.RouteChoice>>() {
+        new NextBusInfo(ctx).getStopInfo(mStopId, new NextBusInfo.ResponseHandler<StopInfo>() {
             @Override
-            public void onResponse(ArrayList<StopConfig.RouteChoice> response) {
-                routes.setAdapter(new RoutePickerAdapter(ctx, response));
+            public void onResponse(StopInfo response) {
+                routes.setAdapter(new RoutePickerAdapter(ctx, response.getRouteChoices()));
             }
         });
 

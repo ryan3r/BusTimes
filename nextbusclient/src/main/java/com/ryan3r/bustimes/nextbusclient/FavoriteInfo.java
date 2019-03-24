@@ -13,24 +13,16 @@ public class FavoriteInfo {
     @NonNull
     private String stopId;
     private int accessCount;
-    private String routeId;
 
     @Ignore
     private String title;
-
-    @Ignore
-    private String color;
-
-    @Ignore
-    private String shortTitle;
 
     FavoriteInfo() {
         stopId = "";
     }
 
-    public FavoriteInfo(@NonNull String id, String rid) {
+    public FavoriteInfo(@NonNull String id) {
         stopId = id;
-        routeId = rid;
         accessCount = 1;
     }
 
@@ -57,30 +49,6 @@ public class FavoriteInfo {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getRouteId() {
-        return routeId;
-    }
-
-    void setRouteId(String routeId) {
-        this.routeId = routeId;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getShortTitle() {
-        return shortTitle;
-    }
-
-    void setShortTitle(String shortTitle) {
-        this.shortTitle = shortTitle;
     }
 
     int get_id() {

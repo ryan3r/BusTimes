@@ -3,6 +3,7 @@ package com.ryan3r.bustimes.nextbusclient;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -28,9 +29,13 @@ public class StopInfo {
     @Embedded
     private LatLon coordinates;
 
+    @Ignore
+    private ArrayList<RouteChoice> routeChoices;
+
     StopInfo() {
         stopId = "null";
         routes = new ArrayList<>();
+        routeChoices = new ArrayList<>();
     }
 
     // parse a stop from the next bus api
@@ -89,6 +94,14 @@ public class StopInfo {
     @Override
     public int hashCode() {
         return stopId.hashCode();
+    }
+
+    public ArrayList<RouteChoice> getRouteChoices() {
+        return routeChoices;
+    }
+
+    public void setRouteChoices(ArrayList<RouteChoice> routeChoices) {
+        this.routeChoices = routeChoices;
     }
 
     // info for a route
