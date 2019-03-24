@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class RoutePickerDialog extends DialogFragment {
     private String mStopId;
+    private StopInfo mStop;
 
     public void setStopId(String stopId) {
         mStopId = stopId;
@@ -33,6 +34,7 @@ public class RoutePickerDialog extends DialogFragment {
         new NextBusInfo(ctx).getStopInfo(mStopId, new NextBusInfo.ResponseHandler<StopInfo>() {
             @Override
             public void onResponse(StopInfo response) {
+                mStop = response;
                 routes.setAdapter(new RoutePickerAdapter(ctx, response.getRouteChoices()));
             }
         });
@@ -42,7 +44,7 @@ public class RoutePickerDialog extends DialogFragment {
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        mStop.saveRouteChoices();
                     }
                 });
 

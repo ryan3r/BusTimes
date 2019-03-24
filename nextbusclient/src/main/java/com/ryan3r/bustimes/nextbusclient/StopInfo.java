@@ -5,6 +5,7 @@ import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 import com.google.gson.JsonObject;
@@ -181,6 +182,11 @@ public class StopInfo {
         }
     }
 
+    // Save the route choices
+    public void saveRouteChoices() {
+        new SaveRouteChoices().run(stopId, getRouteChoices());
+    }
+
     // a latitude and longitude
     public static class LatLon {
         // coordinates
@@ -227,5 +233,31 @@ public class StopInfo {
         void setLat(double lat) {
             this.lat = lat;
         }
+    }
+}
+
+class SaveRouteChoices extends AsyncTask<Object, Object, Object> {
+    private String stopId;
+    private ArrayList<RouteChoice> routeChoices;
+
+    void run(String id, ArrayList<RouteChoice> choices) {
+        stopId = id;
+        routeChoices = choices;
+        execute();
+    }
+
+    @Override
+    final protected Object doInBackground(Object... objects) {
+        RouteChoiceDao db = NextBusInfo.getUserDb().routeChoiceDao();
+
+        db.removeByStop(stopId);
+
+        for(RouteChoice choice : routeChoices) {
+            if(!choice.isSelected()) {
+                db.insert(choice);
+            }
+        }
+
+        return null;
     }
 }

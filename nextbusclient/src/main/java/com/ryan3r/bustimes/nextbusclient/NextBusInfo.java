@@ -42,6 +42,8 @@ public class NextBusInfo extends NextBus {
         this.errorHandler = errorHandler;
     }
 
+    static UserDatabase getUserDb() { return userDb; }
+
     // pass errors on to the error handler
     @Override
     protected void requestError(Throwable error) {
