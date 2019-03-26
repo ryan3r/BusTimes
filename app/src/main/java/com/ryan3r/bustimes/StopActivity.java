@@ -178,7 +178,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
                 // set the action bar title
                 setTitle(stop.getTitle());
 
-                final BaseAdapter predictionsAdapter = new PredictionAdapter(self, nextbus, self, nextBusInfo);
+                final BaseAdapter predictionsAdapter = new PredictionAdapter(self, nextbus, self, nextBusInfo, stop.getTitle());
                 stopTimes.setAdapter(predictionsAdapter);
 
                 ArrayList<String> routes = new ArrayList<>();

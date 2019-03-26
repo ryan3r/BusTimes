@@ -14,6 +14,7 @@ import com.ryan3r.bustimes.nextbusclient.NextBusPredictions;
 
 public class NotifyDialog extends DialogFragment {
     NextBusPredictions.Time mTime;
+    String mStopTitle;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -32,6 +33,8 @@ public class NotifyDialog extends DialogFragment {
                             notify.putExtra("before", beforeTime);
                             notify.putExtra("time", mTime.getTime());
                             notify.putExtra("id", mTime.getPrediction().getId());
+                            notify.putExtra("stop", mTime.getPrediction().getStopId() + "");
+                            notify.putExtra("stopTitle", mStopTitle);
                             getActivity().startService(notify);
                         }
                         catch(NumberFormatException err) {
@@ -46,4 +49,5 @@ public class NotifyDialog extends DialogFragment {
     public void setTime(NextBusPredictions.Time t) {
         mTime = t;
     }
+    public void setTitle(String title) { mStopTitle = title; }
 }

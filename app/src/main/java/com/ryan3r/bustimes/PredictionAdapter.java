@@ -26,13 +26,15 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
     private ArrayList<NextBusPredictions.Time> mPrediction;
     private NextBusPredictions.Handler mHandler;
     private NextBusInfo mInfo;
+    private String mTitle;
 
-    PredictionAdapter(Activity context, NextBusPredictions predictor, NextBusPredictions.Handler handle, NextBusInfo info) {
+    PredictionAdapter(Activity context, NextBusPredictions predictor, NextBusPredictions.Handler handle, NextBusInfo info, String title) {
         mContext = context;
         mInfo = info;
         mPrediction = new ArrayList<>();
         predictor.setHandler(this);
         mHandler = handle;
+        mTitle = title;
     }
 
     public void onPrediction(ArrayList<NextBusPredictions.Prediction> predictions) {
@@ -108,6 +110,7 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
             public void onClick(View view) {
                 NotifyDialog dialog = new NotifyDialog();
                 dialog.setTime(time);
+                dialog.setTitle(mTitle);
                 dialog.show(mContext.getFragmentManager(), "notify-dialog");
             }
         });
