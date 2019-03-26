@@ -33,6 +33,7 @@
             android:name="com.ryan3r.bustimes.StopActivity"
             android:parentActivityName="com.ryan3r.bustimes.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <service android:name=".NotifyService"/>
     </application>
 
 </manifest>

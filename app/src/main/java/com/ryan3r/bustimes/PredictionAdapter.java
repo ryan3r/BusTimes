@@ -1,5 +1,6 @@
 package com.ryan3r.bustimes;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -21,12 +22,12 @@ import java.util.HashSet;
 import java.util.Map;
 
 public class PredictionAdapter extends BaseAdapter implements NextBusPredictions.Handler {
-    private Context mContext;
+    private Activity mContext;
     private ArrayList<NextBusPredictions.Time> mPrediction;
     private NextBusPredictions.Handler mHandler;
     private NextBusInfo mInfo;
 
-    PredictionAdapter(Context context, NextBusPredictions predictor, NextBusPredictions.Handler handle, NextBusInfo info) {
+    PredictionAdapter(Activity context, NextBusPredictions predictor, NextBusPredictions.Handler handle, NextBusInfo info) {
         mContext = context;
         mInfo = info;
         mPrediction = new ArrayList<>();
@@ -101,6 +102,15 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
         }
 
         final NextBusPredictions.Time time = mPrediction.get(position);
+
+        currentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NotifyDialog dialog = new NotifyDialog();
+                dialog.setTime(time);
+                dialog.show(mContext.getFragmentManager(), "notify-dialog");
+            }
+        });
 
         // update the route title
         TextView titleView = currentView.findViewById(R.id.title);

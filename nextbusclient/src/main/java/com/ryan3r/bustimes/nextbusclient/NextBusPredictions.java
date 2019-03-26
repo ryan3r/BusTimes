@@ -130,6 +130,8 @@ public class NextBusPredictions extends NextBus {
         // we already have a callback running
         if (timerCallback != null) return;
 
+        if(!requestsStarted) return;
+
         // create the callback
         timerCallback = new Runnable() {
             @Override
@@ -176,12 +178,7 @@ public class NextBusPredictions extends NextBus {
      * Stop and clear any currently running retry/refresh timer
      */
     private void clearTimer() {
-        if (timerCallback != null) {
-            // remove the callback for the timer if it is running
-            timer.removeCallbacks(timerCallback);
-
-            timerCallback = null;
-        }
+        timer.removeCallbacksAndMessages(null);
     }
 
     /**

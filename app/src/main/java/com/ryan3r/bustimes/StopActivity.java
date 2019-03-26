@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -139,7 +140,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
                 RoutePickerDialog picker = new RoutePickerDialog();
                 picker.setStopId(getIntent().getStringExtra("stop"));
                 picker.setCallback(this);
-                picker.show(getFragmentManager(), "route-picker");
+                picker.show(getFragmentManager(), "route-picker-" + getIntent().getStringExtra("stop"));
                 return true;
 
             default:
@@ -177,7 +178,7 @@ public class StopActivity extends BaseActivity implements NextBusPredictions.Han
                 // set the action bar title
                 setTitle(stop.getTitle());
 
-                BaseAdapter predictionsAdapter = new PredictionAdapter(self, nextbus, self, nextBusInfo);
+                final BaseAdapter predictionsAdapter = new PredictionAdapter(self, nextbus, self, nextBusInfo);
                 stopTimes.setAdapter(predictionsAdapter);
 
                 ArrayList<String> routes = new ArrayList<>();
