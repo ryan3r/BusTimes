@@ -26,7 +26,7 @@ public class NotifyService extends Service {
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(final Intent intent, int flags, int startId) {
         if(intent == null) return START_NOT_STICKY;
 
         // Create a channel for the notification
@@ -34,20 +34,24 @@ public class NotifyService extends Service {
             NotificationChannel channel = new NotificationChannel("arrival", "Bus arrivals", NotificationManager.IMPORTANCE_HIGH);
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
+
+            channel = new NotificationChannel("status", "Bus status", NotificationManager.IMPORTANCE_MIN);
+            manager.createNotificationChannel(channel);
         }
 
         final String id = intent.getStringExtra("id");
-        final long lTime = intent.getLongExtra("time", 0);
         final int before = intent.getIntExtra("before", 0) * 1000;
         final String stopId = intent.getStringExtra("stop");
         final String stopTitle = intent.getStringExtra("stopTitle");
 
         final NextBusPredictions predictions = new NextBusPredictions(this);
 
-        final Context self = this;
+        final Context self = getApplicationContext();
 
         // Count down until we are ready
         predictions.setHandler(new NextBusPredictions.Handler() {
+            long lTime = intent.getLongExtra("time", 0);
+
             @Override
             public void requestError(Throwable err) {}
             @Override
@@ -57,6 +61,7 @@ public class NotifyService extends Service {
             public void onPrediction(ArrayList<NextBusPredictions.Prediction> preds) {
                 // No predictions
                 if(preds.size() == 0) {
+                    updateStatus("No predictions");
                     predictions.stopPredictions();
                     stopSelf();
                     return;
@@ -66,7 +71,7 @@ public class NotifyService extends Service {
                 NextBusPredictions.Time time = null;
 
                 for(NextBusPredictions.Time possible : pred.getTimes()) {
-                    if(possible.getTime() - lTime < MAX_SLIP) {
+                    if(Math.abs(possible.getTime() - lTime) < MAX_SLIP) {
                         time = possible;
                         break;
                     }
@@ -74,10 +79,14 @@ public class NotifyService extends Service {
 
                 // No time matching the one we were given
                 if(time == null) {
+                    updateStatus("No prediction");
                     predictions.stopPredictions();
                     stopSelf();
                     return;
                 }
+
+                lTime = time.getTime();
+                updateStatus("Tracking " + stopTitle + " time " + time.toString());
 
                 // Time to notify the user
                 if(time.getTime() - System.currentTimeMillis() <= before) {
@@ -107,6 +116,18 @@ public class NotifyService extends Service {
         predictions.startPredictions();
         predictions.setRoutes(id);
 
-        return START_REDELIVER_INTENT;
+        return START_STICKY;
+    }
+
+    private void updateStatus(String status) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "status")
+                .setSmallIcon(R.drawable.icon)
+                .setContentTitle("Bus tracker")
+                .setContentText(status)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setOnlyAlertOnce(true);
+
+        NotificationManagerCompat mngr = NotificationManagerCompat.from(getApplicationContext());
+        mngr.notify(1, builder.build());
     }
 }

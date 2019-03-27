@@ -197,6 +197,13 @@ public class NextBusPredictions extends NextBus {
     }
 
     /**
+     * Send a single prediction to the registered handler
+     */
+    public void predict() {
+        predict(0, false, false);
+    }
+
+    /**
      * Get predictions for routes
      */
     private void predict(final int retries, final boolean repeated, boolean useCache) {
