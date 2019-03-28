@@ -17,7 +17,9 @@ import com.ryan3r.bustimes.nextbusclient.NextBusPredictions;
 import java.util.ArrayList;
 
 public class NotifyReceiver extends BroadcastReceiver {
-    final static int MAX_SLIP = 5;
+    final static int MAX_SLIP = 15 * 60 * 1000; // 15 minutes
+    final static int MAX_INTERVAL = 5 * 60 * 1000; // 5 minutes
+    final static double PERCENT_OF_TIME = 0.8;
 
     @Override
     public void onReceive(final Context context, final Intent intent) {
@@ -49,25 +51,25 @@ public class NotifyReceiver extends BroadcastReceiver {
                // No predictions
                if(preds.size() == 0) return;
 
-               long lTime = intent.getLongExtra("time", 0);
+               long lTime = info.getLong("time", 0);
 
                NextBusPredictions.Prediction pred = preds.get(0);
                NextBusPredictions.Time time = null;
 
                for(NextBusPredictions.Time possible : pred.getTimes()) {
-                   if(Math.abs(possible.getTime() - lTime) < MAX_SLIP) {
+                   if(Math.abs(possible.getTime() - lTime) < MAX_SLIP && possible.getVehicle().equals(info.getString("vehicle"))) {
                        time = possible;
                        break;
                    }
                }
 
-               lTime = time.getTime();
-               int before = info.getInt("before", 0);
+               if(time != null) lTime = time.getTime();
+               long before = info.getInt("before", 0) * 1000;
 
                long delayTime = lTime - before - System.currentTimeMillis();
 
                // Show the arrival notification
-               if(delayTime <= 60) {
+               if(delayTime <= 60 * 1000 /* 60 seconds */) {
                    Intent intent = new Intent(context.getApplicationContext(), StopActivity.class);
                    intent.putExtra("stop", info.getString("stop"));
                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -76,7 +78,7 @@ public class NotifyReceiver extends BroadcastReceiver {
                    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "arrival")
                            .setSmallIcon(R.drawable.icon)
                            .setContentTitle(info.getString("stopTitle"))
-                           .setContentText(time.toString())
+                           .setContentText(time != null ? time.toString() : "Tracker lost")
                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                            .setAutoCancel(true)
                            .setOnlyAlertOnce(true)
@@ -87,9 +89,12 @@ public class NotifyReceiver extends BroadcastReceiver {
                }
                // Keep waiting
                else {
-                    delayTime = (long) (delayTime * 0.9);
+                    delayTime = (long) (delayTime * PERCENT_OF_TIME);
+                    delayTime = Math.min(delayTime, MAX_INTERVAL);
 
+                    info.putLong("time", lTime);
                     Intent wakeIntent = new Intent(context, NotifyReceiver.class);
+                    wakeIntent.putExtra("info", info);
                     PendingIntent wakePending = PendingIntent.getBroadcast(context, 0, wakeIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                     AlarmManager manager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
                     manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + delayTime, wakePending);

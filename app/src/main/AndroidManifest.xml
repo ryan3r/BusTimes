@@ -35,7 +35,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <service android:name=".NotifyService"/>
 
-        <receiver android:name=".NotifyReciever"/>
+        <receiver android:process=":remote" android:name=".NotifyReceiver"/>
     </application>
 
 </manifest>

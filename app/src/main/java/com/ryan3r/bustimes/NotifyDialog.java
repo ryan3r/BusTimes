@@ -38,10 +38,12 @@ public class NotifyDialog extends DialogFragment {
                             info.putString("id", mTime.getPrediction().getId());
                             info.putString("stop", mTime.getPrediction().getStopId() + "");
                             info.putString("stopTitle", mStopTitle);
+                            info.putString("vehicle", mTime.getVehicle());
 
                             Intent wakeIntent = new Intent(getContext(), NotifyReceiver.class);
                             wakeIntent.putExtra("info", info);
-                            getContext().sendBroadcast(wakeIntent);
+                            //getContext().sendBroadcast(wakeIntent);
+                            new NotifyReceiver().onReceive(getContext(), wakeIntent);
                         }
                         catch(NumberFormatException err) {
                             Toast.makeText(getContext(), "Time is not a number", Toast.LENGTH_SHORT).show();
