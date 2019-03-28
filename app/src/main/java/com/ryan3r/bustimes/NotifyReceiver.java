@@ -85,7 +85,7 @@ public class NotifyReceiver extends BroadcastReceiver {
                            .setContentIntent(pendingIntent);
 
                    NotificationManagerCompat mngr = NotificationManagerCompat.from(context);
-                   mngr.notify(1, builder.build());
+                   mngr.notify(info.getString("id").hashCode(), builder.build());
                }
                // Keep waiting
                else {
