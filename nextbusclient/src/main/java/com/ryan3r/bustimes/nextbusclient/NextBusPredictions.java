@@ -130,8 +130,6 @@ public class NextBusPredictions extends NextBus {
         // we already have a callback running
         if (timerCallback != null) return;
 
-        if(!requestsStarted) return;
-
         // create the callback
         timerCallback = new Runnable() {
             @Override
@@ -445,6 +443,10 @@ public class NextBusPredictions extends NextBus {
 
         @Override
         public String toString() {
+            if(System.currentTimeMillis() >= time) {
+                return "Arriving";
+            }
+
             return getTimeUntil() + " (" + getArrivalTime() + ")";
         }
     }

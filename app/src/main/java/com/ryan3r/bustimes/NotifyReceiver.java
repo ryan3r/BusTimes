@@ -17,7 +17,7 @@ import com.ryan3r.bustimes.nextbusclient.NextBusPredictions;
 import java.util.ArrayList;
 
 public class NotifyReceiver extends BroadcastReceiver {
-    final static int MAX_SLIP = 15 * 60 * 1000; // 15 minutes
+    final static int MAX_SLIP = 10 * 60 * 1000; // 10 minutes
     final static int MAX_INTERVAL = 5 * 60 * 1000; // 5 minutes
     final static double PERCENT_OF_TIME = 0.8;
 
@@ -44,8 +44,6 @@ public class NotifyReceiver extends BroadcastReceiver {
 
            @Override
            public void onPrediction(ArrayList<NextBusPredictions.Prediction> preds) {
-               predictions.stopPredictions();
-
                Bundle info = intent.getBundleExtra("info");
 
                // No predictions
@@ -102,7 +100,7 @@ public class NotifyReceiver extends BroadcastReceiver {
            }
         });
 
-        predictions.startPredictions();
         predictions.setRoutes(intent.getBundleExtra("info").getString("id"));
+        predictions.predict();
     }
 }
