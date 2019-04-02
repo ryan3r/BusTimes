@@ -17,7 +17,7 @@ import com.ryan3r.bustimes.nextbusclient.NextBusPredictions;
 import java.util.ArrayList;
 
 public class NotifyReceiver extends BroadcastReceiver {
-    final static int MAX_SLIP = 10 * 60 * 1000; // 10 minutes
+    final static int MAX_SLIP = 13 * 60 * 1000; // 13 minutes
     final static int MAX_INTERVAL = 5 * 60 * 1000; // 5 minutes
     final static double PERCENT_OF_TIME = 0.8;
 
