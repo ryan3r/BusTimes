@@ -176,6 +176,7 @@ public class NextBusPredictions extends NextBus {
      * Stop and clear any currently running retry/refresh timer
      */
     private void clearTimer() {
+        timerCallback = null;
         timer.removeCallbacksAndMessages(null);
     }
 
