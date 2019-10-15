@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.support.design.widget.FloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +17,6 @@ import com.ryan3r.bustimes.nextbusclient.StopInfo;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 
 public class PredictionAdapter extends BaseAdapter implements NextBusPredictions.Handler {
     private Activity mContext;
@@ -40,9 +37,11 @@ public class PredictionAdapter extends BaseAdapter implements NextBusPredictions
     public void onPrediction(ArrayList<NextBusPredictions.Prediction> predictions) {
         mPrediction.clear();
 
-        for(NextBusPredictions.Prediction prediction : predictions) {
-            for(NextBusPredictions.Time time : prediction.getTimes()) {
-                mPrediction.add(time);
+        if(predictions != null) {
+            for (NextBusPredictions.Prediction prediction : predictions) {
+                for (NextBusPredictions.Time time : prediction.getTimes()) {
+                    mPrediction.add(time);
+                }
             }
         }
 

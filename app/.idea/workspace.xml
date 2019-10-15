@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5dd8f7da-4d15-48c1-bc89-31adb39b2109" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_common_1_1_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_common_1_1_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_persistence_db_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_persistence_db_framework_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_persistence_room_common_1_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_persistence_room_runtime_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_1_1_3_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_common_2_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_room_room_runtime_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_sqlite_sqlite_framework_2_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_2_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_transition_transition_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_0_2_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_0_2_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_27_1_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_rules_1_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_27_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_volley_volley_1_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_11_8_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_11_8_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_location_11_8_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_11_8_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_material_material_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_2_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/androidTest/java/com/ryan3r/bustimes/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/androidTest/java/com/ryan3r/bustimes/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/BaseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/FavoritesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/FavoritesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/NearByFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/NearByFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/NotifyReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/NotifyReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/NotifyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/NotifyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/PredictionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/PredictionAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/RouteListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/RouteListAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/RoutePickerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/RoutePickerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/StopActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/StopActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_stop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_stop.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/dialog_route_picker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/dialog_route_picker.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_favorite_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_favorite_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_favorites.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_favorites.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_near_by.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_near_by.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_route_fab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_route_fab.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_route_picker_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_route_picker_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_stop_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_stop_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/androidTest/java/com/ryan3r/bustimes/nextbusclient/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/androidTest/java/com/ryan3r/bustimes/nextbusclient/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/ArrayConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/ArrayConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/BusSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/BusSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/FavoriteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/FavoriteDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/FavoriteInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/FavoriteInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/ListConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/ListConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBusInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBusInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBusPredictions.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBusPredictions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/RouteChoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/RouteChoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/RouteChoiceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/RouteChoiceDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/ScheduleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/ScheduleDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/StopDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/StopDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/StopDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/StopDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/StopInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/StopInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/UserDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/UserDatabase.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/../bustimeswatch/.gradle/" />
+    <ignored path="$PROJECT_DIR$/../.gradle/" />
+    <ignored path="$PROJECT_DIR$/../nextbusclient/build/" />
+    <ignored path="$PROJECT_DIR$/build/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_API_29" />
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/BusSchedule.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBusInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="187" selection-start-line="187" selection-end-line="187" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBusPredictions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1365">
+              <caret line="270" column="26" selection-start-line="270" selection-start-column="26" selection-end-line="270" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/PredictionAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
+              <folding>
+                <element signature="e#1840#1841#0" expanded="true" />
+                <element signature="e#1911#1912#0" expanded="true" />
+                <element signature="e#2098#2099#0" expanded="true" />
+                <element signature="e#2272#2273#0" expanded="true" />
+                <element signature="e#2490#2491#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/StopInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="42" selection-start-column="42" selection-end-column="42" />
+              <folding>
+                <element signature="e#1330#1331#0" expanded="true" />
+                <element signature="e#1380#1381#0" expanded="true" />
+                <element signature="e#1456#1457#0" expanded="true" />
+                <element signature="e#1516#1517#0" expanded="true" />
+                <element signature="e#1592#1593#0" expanded="true" />
+                <element signature="e#1686#1687#0" expanded="true" />
+                <element signature="e#1744#1745#0" expanded="true" />
+                <element signature="e#1816#1817#0" expanded="true" />
+                <element signature="e#1909#1910#0" expanded="true" />
+                <element signature="e#1984#1985#0" expanded="true" />
+                <element signature="e#2073#2074#0" expanded="true" />
+                <element signature="e#2156#2157#0" expanded="true" />
+                <element signature="e#2246#2247#0" expanded="true" />
+                <element signature="e#3817#3818#0" expanded="true" />
+                <element signature="e#3883#3884#0" expanded="true" />
+                <element signature="e#3955#3956#0" expanded="true" />
+                <element signature="e#4037#4038#0" expanded="true" />
+                <element signature="e#4163#4164#0" expanded="true" />
+                <element signature="e#4760#4761#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>_nextbus</find>
+      <find>NextBus</find>
+      <find>onSuccess</find>
+      <find>1000</find>
+      <find>Time</find>
+      <find>Log</find>
+    </findStrings>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="EXPORT_PRIVATE_KEY" value="false" />
+    <option name="KEY_STORE_PATH" value="$USER_HOME$/android.jks" />
+    <option name="KEY_ALIAS" value="release" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/../nextbusclient/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBus.java" />
+        <option value="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBusPredictions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/PredictionAdapter.java" />
+        <option value="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/StopInfo.java" />
+        <option value="$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBusInfo.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1920" />
+    <option name="y" value="-2" />
+    <option name="width" value="960" />
+    <option name="height" value="1082" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BusTimes" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="BusTimes" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="BusTimes" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="bustimes" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BusTimes" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ExportApk.ApkPath" value="$PROJECT_DIR$" />
+    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/android.jks" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5dd8f7da-4d15-48c1-bc89-31adb39b2109" name="Default Changelist" comment="" />
+      <created>1571086475020</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571086475020</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Build Variants" order="1" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.28175026" />
+      <window_info id="Structure" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Designer" order="5" />
+      <window_info id="Resources Explorer" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Favorites" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Logcat" order="0" weight="0.32948583" />
+      <window_info anchor="bottom" id="Android Profiler" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="2" />
+      <window_info anchor="bottom" id="TODO" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.32937366" />
+      <window_info anchor="bottom" id="Terminal" order="5" />
+      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.32004198" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.32948583" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.32948583" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Gradle" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+    </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="app">
+        <watch expression="i.getId()" language="JAVA" />
+        <watch expression="time.getPrediction().getRouteId()" language="JAVA" />
+        <watch expression="time.getPrediction().getStopId()" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>time.getPrediction().getStopId()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>time.getPrediction().stopId()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>time.getPrediction().getRouteId()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i.getId()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../nextbusclient/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../nextbusclient/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/BusSchedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ryan3r/bustimes/PredictionAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="e#1840#1841#0" expanded="true" />
+            <element signature="e#1911#1912#0" expanded="true" />
+            <element signature="e#2098#2099#0" expanded="true" />
+            <element signature="e#2272#2273#0" expanded="true" />
+            <element signature="e#2490#2491#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/StopInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="42" selection-start-column="42" selection-end-column="42" />
+          <folding>
+            <element signature="e#1330#1331#0" expanded="true" />
+            <element signature="e#1380#1381#0" expanded="true" />
+            <element signature="e#1456#1457#0" expanded="true" />
+            <element signature="e#1516#1517#0" expanded="true" />
+            <element signature="e#1592#1593#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
+            <element signature="e#1744#1745#0" expanded="true" />
+            <element signature="e#1816#1817#0" expanded="true" />
+            <element signature="e#1909#1910#0" expanded="true" />
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2073#2074#0" expanded="true" />
+            <element signature="e#2156#2157#0" expanded="true" />
+            <element signature="e#2246#2247#0" expanded="true" />
+            <element signature="e#3817#3818#0" expanded="true" />
+            <element signature="e#3883#3884#0" expanded="true" />
+            <element signature="e#3955#3956#0" expanded="true" />
+            <element signature="e#4037#4038#0" expanded="true" />
+            <element signature="e#4163#4164#0" expanded="true" />
+            <element signature="e#4760#4761#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBusPredictions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1365">
+          <caret line="270" column="26" selection-start-line="270" selection-start-column="26" selection-end-line="270" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../nextbusclient/src/main/java/com/ryan3r/bustimes/nextbusclient/NextBusInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="187" selection-start-line="187" selection-end-line="187" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

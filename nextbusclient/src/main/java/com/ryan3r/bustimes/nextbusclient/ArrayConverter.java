@@ -1,6 +1,6 @@
 package com.ryan3r.bustimes.nextbusclient;
 
-import android.arch.persistence.room.TypeConverter;
+import androidx.room.TypeConverter;
 
 public class ArrayConverter {
     // convert a list to a json string

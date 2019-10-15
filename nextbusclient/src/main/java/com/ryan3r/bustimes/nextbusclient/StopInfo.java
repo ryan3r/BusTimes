@@ -1,12 +1,12 @@
 package com.ryan3r.bustimes.nextbusclient;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Embedded;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
+import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.google.gson.JsonObject;
 
@@ -43,9 +43,9 @@ public class StopInfo {
     static StopInfo fromNextBus(JsonObject jStop) {
         StopInfo stop = new StopInfo();
 
-        stop.title = jStop.get("title").getAsString();
-        stop.stopId = jStop.get("tag").getAsString();
-        stop.coordinates = new LatLon(jStop.get("lat").getAsDouble(), jStop.get("lon").getAsDouble());
+        stop.title = jStop.get("Name").getAsString();
+        stop.stopId = jStop.get("ID").getAsString();
+        stop.coordinates = new LatLon(jStop.get("Latitude").getAsDouble(), jStop.get("Longitude").getAsDouble());
 
         return stop;
     }
@@ -111,8 +111,10 @@ public class StopInfo {
         private String title;
         private String color;
         private String textColor;
+        private String shortTitle;
+        private String customerID;
 
-        RouteInfo(String i, String t, String c, String o) {
+        RouteInfo(String i, String t, String c, String o, String ci, String st) {
             id = i;
             title = t;
 
@@ -121,15 +123,29 @@ public class StopInfo {
 
             color = c;
             textColor = o;
+            customerID = ci;
+            shortTitle = st;
         }
 
         // parse a json object
         static RouteInfo parse(JsonObject route) {
+            String id = route.get("ID").getAsString();
+
+            // TODO: Support more strings
+            if(route.has("Patterns")) {
+                id = route
+                        .get("Patterns").getAsJsonArray()
+                        .get(0).getAsJsonObject()
+                        .get("ID").getAsString();
+            }
+
             return new RouteInfo(
-                    route.get("tag").getAsString(),
-                    route.get("title").getAsString(),
-                    route.get("color").getAsString(),
-                    route.get("oppositeColor").getAsString()
+                    id,
+                    route.get("Name").getAsString(),
+                    route.get("Color").getAsString(),
+                    route.get("TextColor").getAsString(),
+                    route.get("CustomerID").getAsString(),
+                    route.get("ShortName").getAsString()
             );
         }
 
@@ -145,38 +161,25 @@ public class StopInfo {
             return color;
         }
 
-        // Ex: 1A Red West -> ["1A", "W"]
-        private final Pattern PATTERN1 = Pattern.compile("^(\\d{1,2}\\w?) \\w+ (\\w)\\w+$");
-        // Ex: A West -> ["A", "W"]
-        private final Pattern PATTERN2 = Pattern.compile("^(\\D)(?: (\\w)\\w+)?$");
-        // Ex: 6A Towers -> ["6A"]
-        private final Pattern PATTERN3 = Pattern.compile("^(\\d{1,2}A?B?) \\w+$");
+        public String getCustomerID() {
+            return customerID;
+        }
 
         // get a short version of the title
         public String getShortTitle() {
-            Matcher matcher;
-
-            if((matcher = PATTERN1.matcher(title)).find()) {
-                return matcher.group(1) + matcher.group(2);
-            }
-            else if((matcher = PATTERN2.matcher(title)).find()) {
-                return matcher.group(1) + (matcher.group(2) == null ? "" : matcher.group(2));
-            }
-            else if((matcher = PATTERN3.matcher(title)).find()) {
-                return matcher.group(1);
-            }
-
-            return null;
+            return shortTitle;
         }
 
         // convert a route to json
         JsonObject toJson() {
             JsonObject route = new JsonObject();
 
-            route.addProperty("tag", id);
-            route.addProperty("title", title);
-            route.addProperty("color", color);
-            route.addProperty("oppositeColor", textColor);
+            route.addProperty("ID", id);
+            route.addProperty("Name", title);
+            route.addProperty("Color", color);
+            route.addProperty("TextColor", textColor);
+            route.addProperty("CustomerID", textColor);
+            route.addProperty("ShortName", shortTitle);
 
             return route;
         }

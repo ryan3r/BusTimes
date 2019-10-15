@@ -1,6 +1,6 @@
 package com.ryan3r.bustimes.nextbusclient;
 
-import android.arch.persistence.room.TypeConverter;
+import androidx.room.TypeConverter;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

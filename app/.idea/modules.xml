@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../BusTimes.iml" filepath="$PROJECT_DIR$/../BusTimes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../bustimeswatch/bustimeswatch.iml" filepath="$PROJECT_DIR$/../bustimeswatch/bustimeswatch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../nextbusclient/nextbusclient.iml" filepath="$PROJECT_DIR$/../nextbusclient/nextbusclient.iml" />
+    </modules>
+  </component>
+</project>

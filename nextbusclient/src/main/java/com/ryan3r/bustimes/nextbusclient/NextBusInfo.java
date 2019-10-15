@@ -1,6 +1,6 @@
 package com.ryan3r.bustimes.nextbusclient;
 
-import android.arch.persistence.room.Room;
+import androidx.room.Room;
 import android.content.Context;
 import android.os.AsyncTask;
 
@@ -16,6 +16,7 @@ import java.util.List;
 public class NextBusInfo extends NextBus {
     private static StopDatabase db = null;
     private static UserDatabase userDb = null;
+    private int _refs = 0;
 
     public NextBusInfo(Context ctx) {
         super(ctx);
@@ -67,7 +68,7 @@ public class NextBusInfo extends NextBus {
         });
     }
 
-    // download and save the next bus meta data
+    // download and save the next bus metadata
     private void downloadData(String id, final Runnable onDone) {
         // we already loaded the data
         if(stopCache.containsKey(id)) {
@@ -94,45 +95,77 @@ public class NextBusInfo extends NextBus {
             // if we don't have anything in the cache download the data
             @Override
             public void onError() {
-                // load the info for the route
-                _nextBus("routeConfig", "&terse", new JsonHandler() {
-                    @Override
-                    public void onSuccess(JsonElement json) {
-                        JsonArray routes = json.getAsJsonObject().getAsJsonArray("route");
-                        // convert the data to our preferred format
-                        HashSet<StopInfo> toStore = new HashSet<>();
+                _loadAllStops(onDone);
+            }
+        });
+    }
 
-                        // process each route
-                        for (JsonElement routeEl : routes) {
-                            JsonObject route = routeEl.getAsJsonObject();
-                            JsonArray stops = route.getAsJsonArray("stop");
+    /**
+     * Make api requests for the bus stops
+     */
+    private void _loadAllStops(final Runnable onDone) {
+        // load the info for the routes
+        _apiCall("/Region/0/Routes", new JsonHandler() {
+            @Override
+            public void onSuccess(JsonArray routes) {
+                // convert the data to our preferred format
+                final HashSet<StopInfo> toStore = new HashSet<>();
+                // reference count our api requests
+                _refs = 0;
 
-                            // find the stop that was requested
-                            for (JsonElement current : stops) {
-                                // load or create the stop
-                                StopInfo info = stopCache.get(current.getAsJsonObject().get("tag").getAsString());
+                // process each route
+                for (JsonElement routeEl : routes) {
+                    final JsonObject route = routeEl.getAsJsonObject();
+                    String routeId = route.get("ID").getAsString();
 
-                                if(info == null) {
-                                    info = StopInfo.fromNextBus(current.getAsJsonObject());
+                    // Get the directions for this route
+                    _apiCall("/Route/" + routeId + "/Directions", new JsonHandler() {
+                        @Override
+                        public void onSuccess(JsonArray json) {
+                            for (JsonElement direction : json) {
+                                for (JsonElement stopEl : direction.getAsJsonObject().get("Stops").getAsJsonArray()) {
+                                    JsonObject stop = stopEl.getAsJsonObject();
+
+                                    // load or create the stop
+                                    StopInfo info = stopCache.get(stop.get("ID").getAsString());
+
+                                    if (info == null) {
+                                        info = StopInfo.fromNextBus(stop);
+                                    }
+
+                                    // add the route to this stop
+                                    info.addRoute(route);
+
+                                    // cache the stop info
+                                    stopCache.put(info.getId(), info);
+
+                                    // get the raw version of the stop info
+                                    toStore.add(info);
                                 }
-
-                                // add the route to this stop
-                                info.addRoute(route);
-
-                                // cache the stop info
-                                stopCache.put(info.getId(), info);
-
-                                // get the raw version of the stop info
-                                toStore.add(info);
                             }
+
+                            // decrement reference count
+                            // NOTE: we do this in onError so our app does not hang if there is an error
+                            onError(null);
                         }
 
-                        onDone.run();
+                        @Override
+                        public void onError(Throwable err) {
+                            super.onError(err);
+                            // TODO: Make this thread safe
+                            --_refs;
 
-                        // cache the data for future use
-                        new SaveStops(toStore).run(db, null);
-                    }
-                });
+                            if(_refs == 0) {
+                                // cache the data for future use
+                                new SaveStops(toStore).run(db, null);
+
+                                onDone.run();
+                            }
+                        }
+                    });
+
+                    ++_refs;
+                }
             }
         });
     }
@@ -206,6 +239,7 @@ public class NextBusInfo extends NextBus {
 
     private void _getSchedule(final String day, final String stopId, final String routeId,
                               final NextBusInfo.ResponseHandler<BusSchedule> handler) {
+        /*
         _nextBus("schedule", "&r=" + routeId, new JsonHandler() {
             @Override
             public void onSuccess(JsonElement json) {
@@ -227,6 +261,7 @@ public class NextBusInfo extends NextBus {
                 new SaveSchedules(schedules).run(db, null);
             }
         });
+         */
     }
 }
 

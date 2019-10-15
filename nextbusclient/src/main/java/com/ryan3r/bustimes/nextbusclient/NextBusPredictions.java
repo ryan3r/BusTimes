@@ -1,7 +1,6 @@
 package com.ryan3r.bustimes.nextbusclient;
 
 import android.content.Context;
-import android.widget.ArrayAdapter;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -9,13 +8,11 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 /**
  * The interface between the ui and next bus
@@ -33,6 +30,8 @@ public class NextBusPredictions extends NextBus {
     private ArrayList<NextBusPredictions.Prediction> stopTimes;
     // predictions started before routes were given
     private boolean requestsStarted = false;
+    // reference counting for prediction requests
+    private int _refs = 0;
 
     // the time to wait after a failed attempt
     private static final int FAIL_DELAY = 15000;
@@ -212,7 +211,6 @@ public class NextBusPredictions extends NextBus {
         nbHandler.onLoadStart();
 
         boolean allCached = true;
-        StringBuilder queryBuilder = new StringBuilder();
 
         HashSet<String> toRemove = new HashSet<>();
 
@@ -226,18 +224,16 @@ public class NextBusPredictions extends NextBus {
 
                 toRemove.add(stop);
             }
-
-            queryBuilder.append("&stops=").append(stop);
         }
 
-        // remove old keys
+        // remove old keys (do it here to avoid issues while iterating)
         for(String key : toRemove) predictionCache.remove(key);
 
         // all the predictions are already in the cache
         if(allCached && useCache) {
             stopTimes = new ArrayList<>();
 
-            for(String stop : stops) {
+            for (String stop : stops) {
                 stopTimes.add(predictionCache.get(stop));
             }
 
@@ -245,104 +241,78 @@ public class NextBusPredictions extends NextBus {
             nbHandler.onPrediction(stopTimes);
 
             // set up the next refresh
-            if(repeated) {
+            if (repeated) {
                 tick(REFRESH_INTERVAL, 0, true);
             }
 
             return;
         }
 
-        String query = queryBuilder.toString();
+        // Reference count callbacks
+        _refs = 0;
 
-        _nextBus("predictionsForMultiStops", query, new NextBus.JsonHandler() {
-            public void onSuccess(JsonElement json) {
-                stopTimes = new ArrayList<>();
+        for(String _stopId : stops) {
+            // TODO: Fix the stop ids
+            final String stopId = _stopId.split("\\|")[1];
 
-                JsonElement preds = json.getAsJsonObject().get("predictions");
+            // TODO: Make customerId non constant
+            _apiCall("/Stop/" + stopId + "/Arrivals?customerID=187", new NextBus.JsonHandler() {
+                public void onSuccess(JsonArray routes) {
+                    stopTimes = new ArrayList<>();
 
-                // handle the single element and multi element case
-                if(preds.isJsonArray()) {
-                    JsonArray predArr = preds.getAsJsonArray();
+                    // Get the predictions for each route
+                    for(JsonElement routeEl : routes) {
+                        JsonObject route = routeEl.getAsJsonObject();
 
-                    for(int i = 0; i < predArr.size(); ++i) {
-                        _handlePred(predArr.get(i).getAsJsonObject());
+                        Prediction prediction = new NextBusPredictions.Prediction(
+                                route.get("RouteID").getAsInt(),
+                                Integer.parseInt(stopId), // TODO: Make all IDs strings
+                                System.currentTimeMillis()
+                        );
+
+                        stopTimes.add(prediction);
+
+                        for(JsonElement timeEl : route.get("Arrivals").getAsJsonArray()) {
+                            JsonObject time = timeEl.getAsJsonObject();
+                            long arrivalTime = (long) time.get("SecondsToArrival").getAsDouble();
+
+                            prediction.times.add(new Time(arrivalTime, time.get("VehicleID").getAsString(), prediction));
+                        }
+                    }
+
+                    // Decrement reference count
+                    --_refs;
+
+                    if(_refs == 0) {
+                        // cache the predictions
+                        for (NextBusPredictions.Prediction pred : stopTimes) {
+                            predictionCache.put(pred.getId(), pred);
+                        }
+
+                        // send the result to the views
+                        nbHandler.onPrediction(stopTimes);
+
+                        lastRefresh = System.currentTimeMillis();
+
+                        // set up the next refresh
+                        if (repeated) {
+                            tick(REFRESH_INTERVAL, 0, true);
+                        }
                     }
                 }
-                else {
-                    _handlePred(preds.getAsJsonObject());
+
+                // retry sooner after errors
+                public void onError(Throwable err) {
+                    lastRefresh = System.currentTimeMillis();
+
+                    if (retries == -1) return;
+
+                    tick(FAIL_DELAY, retries + 1, repeated);
                 }
+            });
 
-                // cache the predictions
-                for(NextBusPredictions.Prediction pred : stopTimes) {
-                    predictionCache.put(pred.getId(), pred);
-                }
-
-                // send the result to the views
-                nbHandler.onPrediction(stopTimes);
-
-                lastRefresh = System.currentTimeMillis();
-
-                // set up the next refresh
-                if(repeated) {
-                    tick(REFRESH_INTERVAL, 0, true);
-                }
-            }
-
-            private void _handlePred(JsonObject pred) {
-                if(pred == null || pred.get("direction") == null) return;
-
-                JsonObject dir;
-
-                // TODO: Proper separation of directions
-                if (pred.get("direction").isJsonArray()) {
-                    dir = pred.getAsJsonArray("direction").get(0).getAsJsonObject();
-                }
-                else {
-                    dir = pred.getAsJsonObject("direction");
-                }
-
-                // no direction
-                if (dir == null || pred.get("direction").isJsonNull()) return;
-
-                JsonElement predEl = dir.get("prediction");
-
-                // no prediction
-                if(dir.get("prediction").isJsonNull()) return;
-
-                Prediction prediction = new NextBusPredictions.Prediction(
-                        pred.get("routeTag").getAsInt(),
-                        pred.get("stopTag").getAsInt(),
-                        System.currentTimeMillis()
-                );
-
-                stopTimes.add(prediction);
-
-                // more array funkiness
-                if(predEl.isJsonArray()) {
-                    JsonArray predArr = predEl.getAsJsonArray();
-
-                    for(int i = 0; i < predArr.size(); ++i) {
-                        _handleTime(predArr.get(i).getAsJsonObject(), prediction);
-                    }
-                }
-                else {
-                    _handleTime(predEl.getAsJsonObject(), prediction);
-                }
-            }
-
-            private void _handleTime(JsonObject time, NextBusPredictions.Prediction prediction) {
-                prediction.times.add(new Time(time.get("epochTime").getAsLong(), time.get("vehicle").getAsString(), prediction));
-            }
-
-            // retry sooner after errors
-            public void onError(Throwable err) {
-                lastRefresh = System.currentTimeMillis();
-
-                if(retries == -1) return;
-
-                tick(FAIL_DELAY, retries + 1, repeated);
-            }
-        });
+            ++_refs;
+        }
     }
 
     /**
@@ -398,7 +368,7 @@ public class NextBusPredictions extends NextBus {
         private Prediction prediction;
 
         Time(long t, String vId, Prediction pred) {
-            time = t;
+            time = System.currentTimeMillis() + t * 1000;
             vehicle = vId;
             prediction = pred;
         }
